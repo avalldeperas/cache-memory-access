@@ -31,8 +31,6 @@ public class AccessCache {
             }
             currentCache.add(lineValues);
         }
-
-        print(currentCache);
     }
 
     protected void editCache() {
@@ -61,7 +59,6 @@ public class AccessCache {
             }
         }
 
-        valueResults.addAll(calculateRates(-1, -1));
         printExecutionResults(valueResults);
     }
 
@@ -78,7 +75,6 @@ public class AccessCache {
     }
 
     protected void calculateFailure(Integer value) {
-        return;
     }
 
     protected void printExecutionResults(List<String> valueResults) {

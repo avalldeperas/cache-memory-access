@@ -24,26 +24,18 @@ public class Testing {
         ImmediateAccessCache immediateAccessCache = new ImmediateAccessCache(BLOCK_SIZE, CACHE_LINE_SIZE);
         immediateAccessCache.process(values);
 
-        List<Integer> failures = immediateAccessCache.getFailures();
-        System.out.println("Fallades = " + failures);
-        double result = (double) failures.size() / values.size();
-        String rateOfErrors = String.format("tf = %d fallades / %d accessos = %s", failures.size(), values.size(), result);
-        String resultStr = String.format("tf = %d fallades / %d accessos = %s", failures.size(), values.size(), result);
-        System.out.println(resultStr);
+        List<String> ratesStrings = immediateAccessCache.calculateRates(0.1, 0.2);
+        ratesStrings.forEach(System.out::println);
     }
 
     @Test
     void process_completelyAssociativeLRU() {
         List<Integer> values = asList(7, 8, 9, 12, 4, 24, 18, 29, 15, 45, 51, 13, 73, 14, 52, 42, 28, 58, 20, 21);
-        System.out.println("Lectures = " + values);
         CompletelyAssociativeAccessLRUCache completelyAssociative = new CompletelyAssociativeAccessLRUCache(BLOCK_SIZE, CACHE_LINE_SIZE);
         completelyAssociative.process(values);
 
-        List<Integer> failures = completelyAssociative.getFailures();
-        System.out.println("Fallades = " + failures);
-        double result = (double) failures.size() / values.size();
-        String resultStr = String.format("tf = %d fallades / %d accessos = %s", failures.size(), values.size(), String.valueOf(result));
-        System.out.println(resultStr);
+        List<String> strings = completelyAssociative.calculateRates(1.2, 2.2);
+        strings.forEach(System.out::println);
     }
 
 
@@ -57,8 +49,6 @@ public class Testing {
 
         List<Integer> failures = immediateAccessCache.getFailures();
         assertEquals(expectedFailures, failures);
-
-        immediateAccessCache.calculateRates(0.2, 0.5);
     }
 
 
@@ -111,7 +101,6 @@ public class Testing {
                         asList(32, 55, 12)),
                 Arguments.of(asList(0, 16, 8, 2, 24, 48, 22, 53, 23, 50),
                                         asList(48, 22))
-
         );
     }
 }

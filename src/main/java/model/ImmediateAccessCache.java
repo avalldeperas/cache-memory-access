@@ -42,6 +42,6 @@ public class ImmediateAccessCache extends AccessCache {
         String finalLine = String.format("%d:%d (%d-%d) a la línia %d\n",
                 block, e, firstNumber, lastNumber, line);
 
-        return failureTitle + bLine + lLine + eLine + finalLine + currentCache + "\n";
+        return failureTitle + bLine + lLine + eLine + finalLine;
     }
 }
