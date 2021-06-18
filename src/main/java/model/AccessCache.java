@@ -92,7 +92,7 @@ public class AccessCache {
 
         if (hasAccessTimes(errorAccessTime, accuracyAccessTime)) {
             double averageTime = accuracyRate * accuracyAccessTime + errorRate * errorAccessTime;
-            rateStrings.add(String.format("tm = Te * te + Tf * tf = %s * %s + %s * %s = %s",
+            rateStrings.add(String.format("tm = Te * te + Tf * tf = %s * %s + %s * %s = %sns",
                     accuracyRate, accuracyAccessTime, errorRate, errorAccessTime, averageTime));
         }
 
